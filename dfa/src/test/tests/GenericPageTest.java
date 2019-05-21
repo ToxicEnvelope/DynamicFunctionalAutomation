@@ -24,16 +24,19 @@ public class GenericPageTest extends BaseTest {
         PageStrategy strategy2;
         String EXPECTED_DATA = "Test function...";
 
-
-        Fixture() {
-            strategy1 = new PageStrategy(new LoginPageBehavior(getDriver()), new ReadyPageContext());
-            strategy2 = new PageStrategy(new HomePageBehavior(getDriver()), new LoadingPageContext());
+        Fixture(WebDriver driver) {
+            strategy1 = new PageStrategy(new LoginPageBehavior(driver), new ReadyPageContext(driver));
+            strategy2 = new PageStrategy(new HomePageBehavior(driver), new LoadingPageContext(driver));
         }
 
     }
 
-    Fixture fixture = new Fixture();
+    private Fixture fixture;
 
+    @BeforeClass
+    public void prepareData() {
+        fixture = new Fixture(getDriver());
+    }
 
 
     @Test

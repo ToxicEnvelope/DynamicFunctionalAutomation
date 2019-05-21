@@ -1,9 +1,15 @@
 package page.pd.dfa.concrete.context;
 
+import org.openqa.selenium.WebDriver;
+import page.pd.dfa.base.BasePage;
 import page.pd.dfa.utils.IContextPageBehavior;
 
-public class ReadyPageContext implements IContextPageBehavior {
+public class ReadyPageContext extends BasePage implements IContextPageBehavior {
 
+
+    public ReadyPageContext(WebDriver driver) {
+        super(driver);
+    }
 
     @Override
     public void contextLoaded() {
